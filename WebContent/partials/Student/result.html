@@ -1,0 +1,175 @@
+<div class="studentFont">
+<div class="studentHead">
+  <div id="menu-toggle">
+    <i class="fa fa-bars"></i>
+    <span>Tasks</span>
+  </div>
+  <div class="logo">
+    Student
+  </div>
+</div>
+<div class="studentSidebar">
+  <ul>
+    <li><a href="#/dash"><i class="fa fa-desktop"></i><span>Dashboard</span></a></li>
+    <li><a href="#/profile"><i class="fa fa-user"></i><span>Profile</span></a></li>
+    <li><a href="#/AdmCont"><i class="fa fa-phone"></i><span>Contact Admin</span></a></li>
+    <li><a href="#/stuHall"><i class="fa fa-id-card"></i><span>Hall Ticket</span></a></li>
+    <li><a href="#/register"><i class="fa fa-user-plus"></i><span>Register</span></a></li>
+    <li><a href="#/result"><i class="fa fa-trophy" style="font-size:24px; color:#6cbac8;"></i><span>Results</span></a></li>
+    <li><a href="#/"><i class="fa fa-power-off"></i><span>Logout</span></a></li>
+    </ul>
+</div>
+
+
+	<div class="studentMain">
+		<div class="hipsum">
+			<h1>Examination Results</h1>
+			<div class="jumbotron">
+
+				<h3>Pick a semester</h3>
+				<div class="form-group">
+					<select ng-model="getResults.sem" ng-change="getResults.res()" class="form-control">
+						<option value="">--Select--</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+					</select>
+					
+					
+				<br><br>	
+				
+				<div ng-show="resPub">	
+				
+				<div id="marksheetPdf">	
+				<table class="table table-bordered table-responsive" border=5  style="background-color: #abfedb"  >
+				<tr>
+				<th colspan="4" align="center" class="text-center" style="font-family: 'Open Sans Condensed', sans-serif"><h3><b>Mark sheet</b></h3></th>
+				</tr>
+				<tr  height="60" width="40%" >
+				<td colspan="2" style="font-family: 'Open Sans Condensed', sans-serif">Name:{{dispResults.name}}</td>
+				<td colspan="2" style="font-family: 'Open Sans Condensed', sans-serif">Registration Number:{{dispResults.regno}}</td>
+				<!-- <td style="vertical-align: bottom;font-family: 'Open Sans Condensed', sans-serif" rowspan="2">verified by:</td> -->
+				
+				</tr>
+				<tr height="60" width="40%" >
+				<td colspan="2" style="font-family: 'Open Sans Condensed', sans-serif;">Department:{{dispResults.dept}}</td>
+				<td colspan="2" style="font-family: 'Open Sans Condensed', sans-serif;">Semester:{{getResults.sem}}</td>
+				
+				</tr>
+				<tr>
+				<td > 
+					<table class="table-hover text-center" >
+					<tr> <th>Course Id</th></tr>
+					<tr ng-repeat="item in dispResults.subjs" style="font-family: 'Open Sans Condensed', sans-serif;">
+						<td	>{{item}}</td>
+					</tr>
+					</table>
+				</td>
+				
+				<td>
+					<table class="table-hover">
+					 <tr><th>Marks Secured</th></tr> 
+					  <tr ng-repeat="item1 in dispResults.mrks track by $index" style="font-family: 'Open Sans Condensed', sans-serif;">
+						<td>{{item1}}</td>
+					</tr> 
+					</table>
+				</td>
+				
+				<td class="text-center">
+					<table class="table-hover">
+					<tr><th>Grade</th></tr> 
+					 <tr ng-repeat="item2 in dispResults.grade track by $index" style="font-family: 'Open Sans Condensed', sans-serif;">
+						<td>{{item2}}</td>
+					</tr>  
+					</table> 
+				</td>
+				<td class="text-center">
+					<table class="table-hover">
+					<tr><th>Pass/Fail</th></tr> 
+					<tr ng-repeat="item3 in dispResults.result track by $index" style="font-family: 'Open Sans Condensed', sans-serif;">
+						<td>{{item3}}</td>
+					</tr> 
+					</table> 
+				</td>
+				<tr>
+				
+					<td colspan="2" class="text-center">
+					<table class="table-hover">
+					<tr><th>SGPA:{{dispResults.sgpa}}</th></tr>
+					</table> 
+					</td>
+					
+					<td colspan="2" class="text-center">
+					<table class="table-hover">
+					<tr><th>CGPA:{{dispResults.cgpa}}</th></tr> 
+					</table> 
+					</td>
+				
+				
+				</tr>
+				
+				
+				<tr height="70">
+				<td colspan="2" valign="bottom"  style="vertical-align: bottom;font-family: 'Open Sans Condensed', sans-serif">Head of Department[H.O.D]</td>
+				<td colspan="2" style="vertical-align: bottom;font-family: 'Open Sans Condensed', sans-serif">(Controller of Examination)</td>
+				
+				</tr>
+				</table>
+					
+				<!-- <input type="submit" value="Download Marksheet" onclick="downloadPDF()"> -->
+				</div>	
+				<div class="btn btn-info" onclick="downloadPDF()"><i class="fa fa-file-pdf-o" style="font-size:26px; color:red;"></i>&nbsp;Download MarkSheet</div>
+				</div>
+				<div ng-show="resNotpub">Results Not published yet!</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<p>Exam-Cell-Automation</p>
+		</div>
+	</div>
+	
+	
+	
+	
+ <script type="text/javascript">
+
+var main = document.querySelector(".studentMain");
+var sidebar = document.querySelector(".studentSidebar");
+var menutoggle = document.querySelector("#menu-toggle");
+if(menutoggle){
+menutoggle.addEventListener("click", function(e) {
+  menutoggle.classList.toggle("active");
+  main.classList.toggle("active");
+  sidebar.classList.toggle("active");
+
+  if (sidebar.classList.contains("active")) {
+    menutoggle.querySelector("i").classList.remove("fa-bars");
+  } else {
+    menutoggle.querySelector("i").classList.add("fa-bars");
+  }
+});
+}
+
+</script>
+
+<script>
+    var downloadPDF = function() {
+      DocRaptor.createAndDownloadDoc("YOUR_API_KEY_HERE", {
+        test: true, // test documents are free, but watermarked
+        type: "pdf",
+        document_content: document.querySelector('#marksheetPdf').innerHTML, // use this page's HTML
+        // document_content: "<h1>Hello world!</h1>",               // or supply HTML directly
+        // document_url: "http://example.com/your-page",            // or use a URL
+        // javascript: true,                                        // enable JavaScript processing
+        // prince_options: {
+        //   media: "screen",                                       // use screen styles instead of print styles
+        // }
+      })
+    }
+</script>

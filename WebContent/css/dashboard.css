@@ -1,0 +1,49 @@
+.mark
+{
+	border: solid;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-style: normal;
+	background-color: #abfedb;
+	border: 1px solid #dfe8f1;
+  	border-radius:50px;
+	
+}
+.holder { 
+ 	background-color:#abfedb;
+  /* width:300px;
+  height:250px; */
+  overflow:hidden;
+  padding:10px;
+  font-family:Helvetica;
+}
+.holder {
+  position: relative;
+  left: 0px;
+  top: 10px;
+  width:300px;
+  height:350px;
+  overflow: hidden;
+  border: 1px solid #dfe8f1;
+  border-radius:10px;
+  
+}
+.holder ul {
+  list-style:none;
+  margin:0;
+  padding:0;
+  position: relative;
+}
+.holder ul li {
+  padding:10px 0px;
+}
+.holder ul li a {
+  color:darkred;
+  text-decoration:none;
+}
+
+.welcomeText{
+	font-size: 20px;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-weight: normal;
+}
+

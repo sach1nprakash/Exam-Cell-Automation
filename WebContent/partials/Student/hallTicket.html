@@ -1,0 +1,134 @@
+<div class="studentFont">
+	<div class="studentHead">
+		<div id="menu-toggle">
+			<i class="fa fa-bars"></i> <span>Tasks</span>
+		</div>
+		<div class="logo">Student</div>
+	</div>
+	<div class="studentSidebar">
+		<ul>
+			<li><a href="#/dash"><i class="fa fa-desktop"></i><span>Dashboard</span></a></li>
+			<li><a href="#/profile"><i class="fa fa-user"></i><span>Profile</span></a></li>
+			<li><a href="#/AdmCont"><i class="fa fa-phone"></i><span>Contact Admin</span></a></li>
+			<li><a href="#/stuHall"><i class="fa fa-id-card" style="font-size:24px; color:#6cbac8;"></i><span>Hall Ticket</span></a></li>
+			<li><a href="#/register"><i class="fa fa-user-plus"></i><span>Register</span></a></li>
+			<li><a href="#/result"><i class="fa fa-trophy"></i><span>Results</span></a></li>
+			<li><a href="#/"><i class="fa fa-power-off"></i><span>Logout</span></a></li>
+		</ul>
+	</div>
+
+
+
+	<div class="studentMain">
+		<div class="hipsum">
+		<h1>Hall Ticket</h1>
+			<div class="jumbotron">
+			
+				<div id="hallPdf">
+				<div class="ht-card ht-round ht-white">
+				 <br>				
+	
+				<table class="table table-bordered table-responsive" border=5  style="background-color: #abfedb"  >
+				<tr>
+				<th colspan="3" align="center" class="text-center" style="font-family: 'Open Sans Condensed', sans-serif"><h3><b>Exam Admit Card</b></h3></th>
+				</tr>
+				<tr  height="60" width="40%" >
+				<td style="font-family: 'Open Sans Condensed', sans-serif">Name:{{hallTicket.name}}</td>
+				<td style="font-family: 'Open Sans Condensed', sans-serif">Registration Number:{{hallTicket.studentId}}</td>
+				<td style="vertical-align: bottom;font-family: 'Open Sans Condensed', sans-serif" rowspan="2">verified by:</td>
+				
+				</tr>
+				<tr height="60" width="40%" >
+				<td style="font-family: 'Open Sans Condensed', sans-serif;">Department:{{hallTicket.branch}}</td>
+				<td style="font-family: 'Open Sans Condensed', sans-serif;">Semester:{{hallTicket.sem}}</td>
+				
+				</tr>
+				<tr>
+				<td > 
+					<table class="table-hover text-center" >
+					<tr> <th>Course Id</th></tr>
+					<tr ng-repeat="item in hallTicket.cId" style="font-family: 'Open Sans Condensed', sans-serif;">
+						<td	>{{item}}</td>
+					</tr>
+					</table>
+				</td>
+				
+				<td>
+					<table class="table-hover">
+					 <tr><th>Date</th></tr> 
+					 <tr ng-repeat="item1 in hallTicket.date track by $index" style="font-family: 'Open Sans Condensed', sans-serif;">
+						<td>{{item1}}</td>
+					</tr>
+					</table>
+				</td>
+				
+				<td class="text-center">
+					<table class="table-hover">
+					<tr><th >Time</th></tr> 
+					<tr ng-repeat="item2 in hallTicket.time track by $index" style="font-family: 'Open Sans Condensed', sans-serif;">
+						<td>{{item2}}</td>
+					</tr> 
+					</table> 
+				</td>
+				</tr>
+				<tr height="70" width="40%" >
+				<td valign="bottom"  style="vertical-align: bottom;font-family: 'Open Sans Condensed', sans-serif">(Signature of Student)</td>
+				<td style="vertical-align: bottom;font-family: 'Open Sans Condensed', sans-serif">(Controller of Examination)</td>
+				<td></td>
+				</tr>
+				</table> 
+			
+				<br><br>
+				
+				</div> 
+				
+				</div>
+				<br><br>
+				<button type="submit" class="btn btn-info" ng-disabled="enDownload" onclick="downloadPDF()">
+				<i class="fa fa-file-pdf-o" style="font-size:26px; color:red;"></i>&nbsp;Download HallTicket</button>
+			</div>
+		</div>
+		<div class="footer">
+			<p>Exam-Cell-Automation</p>
+		</div>
+	</div>
+
+</div>
+<script type="text/javascript">
+
+var main = document.querySelector(".studentMain");
+var sidebar = document.querySelector(".studentSidebar");
+var menutoggle = document.querySelector("#menu-toggle");
+if(menutoggle){
+menutoggle.addEventListener("click", function(e) {
+  menutoggle.classList.toggle("active");
+  main.classList.toggle("active");
+  sidebar.classList.toggle("active");
+
+  if (sidebar.classList.contains("active")) {
+    menutoggle.querySelector("i").classList.remove("fa-bars");
+  } else {
+    menutoggle.querySelector("i").classList.add("fa-bars");
+  }
+});
+}
+
+</script>
+
+
+
+<script>
+    var downloadPDF = function() {
+      DocRaptor.createAndDownloadDoc("YOUR_API_KEY_HERE", {
+        test: true, // test documents are free, but watermarked
+        type: "pdf",
+        document_content: document.querySelector('#hallPdf').innerHTML, // use this page's HTML
+        // document_content: "<h1>Hello world!</h1>",               // or supply HTML directly
+        // document_url: "http://example.com/your-page",            // or use a URL
+        // javascript: true,                                        // enable JavaScript processing
+        // prince_options: {
+        //   media: "screen",                                       // use screen styles instead of print styles
+        // }
+      })
+    }
+</script>

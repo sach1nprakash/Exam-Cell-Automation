@@ -1,0 +1,12 @@
+.ht-card,.ht-card-2{box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)}
+
+.ht-round-small{border-radius:2px}.ht-round,.ht-round-medium{border-radius:4px}
+.ht-round-large{border-radius:8px}
+.ht-round-xlarge{border-radius:16px}
+.ht-white,.ht-hover-white:hover{color:#000!important;background-color:#abfedb!important}
+.ht-center{text-align:center!important}
+.ht-center {display:inline-block;width:auto}
+.ht-center text-align:center}	
+.ht-margin-right{margin-right:16px!important}
+.ht-circle{border-radius:50%}
+ 

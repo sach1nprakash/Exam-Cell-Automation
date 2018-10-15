@@ -1,0 +1,97 @@
+<div class="studentFont">
+<div class="studentHead">
+  <div id="menu-toggle">
+    <i class="fa fa-bars"></i>
+    <span>Tasks</span>
+  </div>
+  <div class="logo">
+    Student
+  </div>
+</div>
+<div class="studentSidebar">
+  <ul>
+    <li><a href="#/dash"><i class="fa fa-desktop"></i><span>Dashboard</span></a></li>
+    <li><a href="#/profile"><i class="fa fa-user" style="font-size:24px; color:#6cbac8;"></i><span>Profile</span></a></li>
+    <li><a href="#/AdmCont"><i class="fa fa-phone"></i><span>Contact Admin</span></a></li>
+    <li><a href="#/stuHall"><i class="fa fa-id-card"></i><span>Hall Ticket</span></a></li>
+    <li><a href="#/register"><i class="fa fa-user-plus"></i><span>Register</span></a></li>
+    <li><a href="#/result"><i class="fa fa-trophy"></i><span>Results</span></a></li>
+    <li><a href="#/"><i class="fa fa-power-off"></i><span>Logout</span></a></li>
+    </ul>
+</div>
+
+
+
+<div class="studentMain">
+ <div class="hipsum">
+ <div><h1>My Profile</h1></div>
+  <div class="jumbotron">
+<!--  <div class="main-content"> -->
+	<div class="container-fluid" style="max-width:450px;height:400px;margin-top:80px">    
+ 
+  <div class="row">
+	<div class="w3-card w3-round w3-white">
+        <div class="container-fluid center">
+        <table class="table table-responsive table-hover">
+        <tr>
+        	<td><i class="fa fa-user-circle fa-fw w3-margin-right w3-text-theme" style="color:#2d9b7f;"></i><span><h5><b>Name</b></h5></span></td>
+        	<td style="color:black;">{{studentDash.studentName}}</td>
+        </tr>
+         <tr>
+         	<td><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme" style="color:#2d9b7f;"></i><span><h5><b>Birthday</b></h5></span></td>
+         	<td style="color:black;">{{studentDash.dateOfBirth}} </td>
+         </tr>
+         <tr>
+         	<td><i class="fa fa-bank fa-fw w3-margin-right w3-text-theme" style="color:#2d9b7f;"></i><span><h5><b>Branch</b></h5></span></td>
+         	<td style="color:black;">{{studentDash.branch}}</td>
+         </tr>
+          <tr>
+          	<td><i class="fa fa-at fa-fw w3-margin-right w3-text-theme" style="color:#2d9b7f;"></i><span><h5><b>Email</b></h5></span></td>
+          	<td style="color:black;">{{studentDash.email}}</td>
+          </tr>
+          <tr>
+          	<td><i class="fa fa-graduation-cap fa-fw w3-margin-right w3-text-theme" style="color:#2d9b7f;"></i><span><h5><b>Semester</b></h5></span></td>
+          	<td style="color:black;">{{studentDash.sem}}</td>
+          </tr>
+        
+        </table>
+         
+          
+      	</div>
+      </div>
+      
+      <br>
+	</div>
+	</div>
+	
+		<!-- <br><br><br> -->
+	
+<!-- </div> -->
+</div>
+</div>
+<div class="footer">
+    <p>Exam-Cell-Automation</p>
+  	</div>	
+</div>	
+
+</div>
+ <script type="text/javascript">
+
+var main = document.querySelector(".studentMain");
+var sidebar = document.querySelector(".studentSidebar");
+var menutoggle = document.querySelector("#menu-toggle");
+if(menutoggle){
+menutoggle.addEventListener("click", function(e) {
+  menutoggle.classList.toggle("active");
+  main.classList.toggle("active");
+  sidebar.classList.toggle("active");
+
+  if (sidebar.classList.contains("active")) {
+    menutoggle.querySelector("i").classList.remove("fa-bars");
+  } else {
+    menutoggle.querySelector("i").classList.add("fa-bars");
+  }
+});
+}
+
+</script> 

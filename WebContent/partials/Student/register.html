@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Register for your exams</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+</head>
+<script type="text/javascript">
+
+var main = document.querySelector(".studentMain");
+var sidebar = document.querySelector(".studentSidebar");
+var menutoggle = document.querySelector("#menu-toggle");
+if(menutoggle){
+menutoggle.addEventListener("click", function(e) {
+  menutoggle.classList.toggle("active");
+  main.classList.toggle("active");
+  sidebar.classList.toggle("active");
+
+  if (sidebar.classList.contains("active")) {
+    menutoggle.querySelector("i").classList.remove("fa-bars");
+  } else {
+    menutoggle.querySelector("i").classList.add("fa-bars");
+  }
+});
+}
+
+</script>
+
+<body>
+<div class="studentFont">
+<div class="studentHead">
+  <div id="menu-toggle">
+    <i class="fa fa-bars"></i>
+    <span>Tasks</span>
+  </div>
+  <div class="logo">
+    Student
+  </div>
+</div>
+<div class="studentSidebar">
+  <ul>
+    <li><a href="#/dash"><i class="fa fa-desktop"></i><span>Dashboard</span></a></li>
+    <li><a href="#/profile"><i class="fa fa-user"></i><span>Profile</span></a></li>
+    <li><a href="#/AdmCont"><i class="fa fa-phone"></i><span>Contact Admin</span></a></li>
+    <li><a href="#/stuHall"><i class="fa fa-id-card"></i><span>Hall Ticket</span></a></li>
+    <li><a href="#/register"><i class="fa fa-user-plus" style="font-size:24px; color:#6cbac8;"></i><span>Register</span></a></li>
+    <li><a href="#/result"><i class="fa fa-trophy"></i><span>Results</span></a></li>
+    <li><a href="#/"><i class="fa fa-power-off"></i><span>Logout</span></a></li>
+    </ul>
+</div>
+ 
+<div class="studentMain">
+  <div class="hipsum">
+   <div class="jumbotron">
+	<!-- <div class="main-content"> -->
+		<h1>Register for your upcoming examinations</h1>
+		<form ng-submit="studentSem.fetch()">
+			<h4>Choose a semester</h4>
+			<div class="form-group">
+				<select ng-model="studentSem.sem" class="form-control" ng-change="reset()" required="required">
+					<option value="">--Select--</option>
+					<option value=1>1</option>
+					<option value=2>2</option>
+					<option value=3>3</option>
+					<option value=4>4</option>
+					<option value=5>5</option>
+					<option value=6>6</option>
+					<option value=7>7</option>
+					<option value=8>8</option>
+				</select>
+			</div>
+			<br>
+			<h5>Your current semester is {{currentSem}}</h5>
+			<br>
+			<div ng-show="studentSem.sem">Your have selected semester
+				{{studentSem.sem}}</div>
+			<br> <input type="submit" value="Show courses"
+				class="btn btn-primary">
+		</form>
+
+		<br>
+		<div class=row>
+			<div class="col-md-offset-1 col-md-4">
+				<table class="table table-responsive table-hover table-bordered" style="background-color:#d0fbed">
+					<tr>
+						<th>COURSES OFFERED</th>
+						<th>TYPE</th>
+					</tr>
+					<tr ng-repeat="item in studentSem.mandatory_list">
+						<td><input type="checkbox"
+							 ng-true-value="'{{item.key}}'"
+							ng-false-value="null" ng-checked="true" disabled="disabled"> {{item.key}}</td>
+						<td>{{item.value}}</td>
+					</tr>
+					<tr ng-repeat="item in studentSem.other_list">
+						<td><input type="checkbox"
+							ng-model="studentSem.result2[$index]" ng-true-value="'{{item.key}}'"
+							ng-false-value="null"> {{item.key}}</td>
+						<td>{{item.value}}</td>
+					</tr>
+
+				</table>
+			
+
+			</div>
+
+			<div class="col-md-offset-2 col-md-4">
+
+				<table class="table table-responsive table-hover table-bordered" style="background-color:#d0fbed">
+					<tr>
+						<th>COURSES REGISTERED</th>
+					</tr>
+					<tr ng-repeat="course in studentSem.result track by $index">
+						<td ng-if="course">{{course}}</td>
+					</tr>
+					<tr ng-repeat="course in studentSem.result2 track by $index">
+						<td ng-if="course">{{course}}</td>
+					</tr>
+
+				</table>
+
+			</div>
+		</div>
+		<fieldset style="border: 1px solid teal; padding: 10px; border-radius: 10px;">
+		<form ng-submit="register()">
+		<div class="row">
+		<div class="col-md-offset-1 col-md-4">
+			<h3>Payment Details</h3><br>
+			<input type="submit" value="Calculate Amount" class="btn btn-info" ng-disabled="isDisabled" ng-click="cost()">
+			<br><br><div ng-show="costdata.cost">You have to pay &nbsp;<i class="fa fa-inr"></i>{{costdata.cost}} for registering.</div>
+			
+			<br><br>
+			<label>
+				<b>Enter your DD number here </b> &nbsp;
+			</label>
+			
+			<input ng-model="costdata.ddnumber" required="required" ng-disabled="isDisabled" 
+			type="number" placeholder="6-digit number">
+			
+		</div>
+		</div>
+		
+		<!-- {{studentSem.result}}<br> -->
+		
+		<br>
+		<input type="submit" value="Register" class="btn btn-success" ng-disabled="isDisabled" >
+		</form>
+		</fieldset>
+		<br>
+		<br>
+		<br>
+		{{registerdata.message}}
+		
+	</div>
+	</div>
+	<div class="footer">
+    <p>Exam-Cell-Automation</p>
+  	</div>
+	</div>
+	</div>
+</body>
+
+</html>

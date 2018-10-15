@@ -1,0 +1,39 @@
+/* body {
+    font-family: Arial;
+    color: white;
+}
+ */
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.left {
+    left: 0;
+    /* background-image: url("img/back.jpg");
+	background-size: 1100px 700px; */
+	background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
+}
+
+.right {
+    right: 0;
+    background-image: linear-gradient(#ff7b25,#eb494e);
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.centered img {
+    width: 150px;
+    border-radius: 50%;
+}

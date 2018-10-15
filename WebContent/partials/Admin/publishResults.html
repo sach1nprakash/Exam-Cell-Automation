@@ -1,0 +1,133 @@
+<div class="adminFont">
+<div class="adminHead">
+  <div id="menu-toggle">
+    <i class="fa fa-bars"></i>
+    <span>Tasks</span>
+  </div>
+  <div class="logo">
+    Admin 
+  </div>
+</div>
+<div class="adminSidebar">
+  <ul>
+    <li><a href="#/adminDash"><i class="fa fa-bullhorn"></i><span>Announce</span></a></li>
+    <li><a href="#/adminReq"><i class="fa fa-server"></i><span>Schedule Backlogs</span></a></li>
+    <li><a href="#/adminSch"><i class="fa fa-calendar"></i><span>Schedule Exams</span></a></li>
+    <li><a href="#/adminMsg"><i class="fa fa-envelope-o"></i><span>Inbox</span></a></li>
+    <li><a href="#/adminPubRes"><i class="fa fa-graduation-cap" style="font-size:24px; color:#eb494e;"></i><span>Publish Results</span></a></li>
+    <li><a href="#/"><i class="fa fa-power-off"></i><span>Logout</span></a></li>
+</div>
+
+Content
+<div class="adminMain">
+  <div class="hipsum">
+  <h1>Publish Results</h1>
+    <div class="jumbotron">
+
+				<form ng-submit="displaySubjects()">
+				<div class="row">
+				
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Select Semester</label> 
+							 <select ng-model="publishRes.sem" class="form-control" ng-change="getStudents()"required="required">
+								<option value="">--Select--</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+							</select> 
+						</div>
+					</div>	
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Select Student ID</label> 
+							<select ng-model="publishRes.studentId" class="form-control" required="required">
+								<option value="">--Select--</option>
+								<option ng-repeat="item in student_list track by $index">{{item}}</option>
+							</select> 
+							
+							
+						</div>
+					</div>
+					
+				</div>
+				<br>
+				<input type="submit" class="btn btn-danger" value="Get Subjects">
+				</form>
+				<br><br>
+				
+				<div class="ad-card ad-round ad-white">
+				<table class="table table-bordered table-hover table-responsive">
+				
+				<tr>
+					<th class="text-center">Course ID</th>
+					<th class="text-center">Marks Scored</th>
+					<th class="text-center">Grade</th>
+					<th class="text-center">Result</th>
+				</tr>
+				
+				
+				<tr ng-repeat="item in tempSubList track by $index">
+					<td>{{item}}</td>
+					<td><input type="number" ng-model="publishRes.marks[$index]"></td>
+					<td>
+						<select ng-model="publishRes.grade[$index]">
+							<option>A+</option>
+							<option>A</option>
+							<option>B+</option>
+							<option>B</option>
+							<option>C+</option>
+							<option>C</option>
+							<option>D</option>
+							<option>F</option>
+						</select>
+					</td>
+					<td>
+						<select ng-model="publishRes.result[$index]">
+							<option>Pass</option>
+							<option>Fail</option>
+						</select>
+					</td>
+				
+				</tr>
+				
+				
+				</table>
+				</div>
+				<br>
+				<input type="submit" value="Publish Result" class="btn btn-success" ng-click="submitResults()">
+				
+			</div>
+
+
+  </div>
+  <div class="footer">
+    <p>Exam-Cell-Automation</p>
+  </div>
+</div> 
+</div>
+<script type="text/javascript">
+
+var main = document.querySelector(".adminMain");
+var sidebar = document.querySelector(".adminSidebar");
+var menutoggle = document.querySelector("#menu-toggle");
+if(menutoggle){
+menutoggle.addEventListener("click", function(e) {
+  menutoggle.classList.toggle("active");
+  main.classList.toggle("active");
+  sidebar.classList.toggle("active");
+
+  if (sidebar.classList.contains("active")) {
+    menutoggle.querySelector("i").classList.remove("fa-bars");
+  } else {
+    menutoggle.querySelector("i").classList.add("fa-bars");
+  }
+});
+}
+
+</script> 

@@ -1,0 +1,85 @@
+<div class="adminFont">
+<div class="adminHead">
+  <div id="menu-toggle">
+    <i class="fa fa-bars"></i>
+    <span>Tasks</span>
+  </div>
+  <div class="logo">
+    Admin 
+  </div>
+</div>
+<div class="adminSidebar">
+  <ul>
+    <li><a href="#/adminDash"><i class="fa fa-bullhorn" style="font-size:24px; color:#eb494e;"></i><span>Announce</span></a></li>
+    <li><a href="#/adminReq"><i class="fa fa-server"></i><span>Schedule Backlogs</span></a></li>
+    <li><a href="#/adminSch"><i class="fa fa-calendar"></i><span>Schedule Exams</span></a></li>
+    <li><a href="#/adminMsg"><i class="fa fa-envelope-o"></i><span>Inbox</span></a></li>
+    <li><a href="#/adminPubRes"><i class="fa fa-graduation-cap"></i><span>Publish Results</span></a></li>
+    <li><a href="#/"><i class="fa fa-power-off"></i><span>Logout</span></a></li>
+</div>
+
+<div class="adminMain">
+  <div class="hipsum">
+  <h1> Welcome Admin</h1>
+    <div class="jumbotron">
+
+
+				<div class="row">
+					<div class="col-md-6">
+						<fieldset style="border: 1px solid silver; padding: 10px; border-radius: 10px;">
+						<h3>Make an Announcement</h3>
+						<div class="md-form mb-4 pink-textarea active-pink-textarea-2">
+							<textarea type="text" class="md-textarea form-control"
+								ng-model="announce.message" rows="7"
+								placeholder="Type your message here..."></textarea>
+						</div>
+						<br> <input type="submit" value="Make Announcement" class="btn btn-danger" ng-click="announce.makeAnnouncement()">
+						</fieldset>
+					</div>
+
+					<div class="col-md-6">
+						<fieldset style="border: 1px solid silver; padding: 10px; border-radius: 10px;">
+						<h3>"Quote of the Day"</h3>
+						<h4>Choose a quote</h4>
+						<select ng-model="quot.message">
+							<option value="">--Select--</option>
+							<option ng-repeat="item in quotes">{{item}}</option>
+						</select>
+						<br><br>
+						<input type="submit" value="Fix" class="btn btn-success" ng-click="quot.fixQuote()"> 
+						<br>
+						<br>
+						</fieldset>
+					</div>
+
+				</div>
+
+			</div>
+
+
+  </div>
+  <div class="footer">
+    <p>Exam-Cell-Automation</p>
+  </div>
+</div> 
+</div>
+<script type="text/javascript">
+
+var main = document.querySelector(".adminMain");
+var sidebar = document.querySelector(".adminSidebar");
+var menutoggle = document.querySelector("#menu-toggle");
+if(menutoggle){
+menutoggle.addEventListener("click", function(e) {
+  menutoggle.classList.toggle("active");
+  main.classList.toggle("active");
+  sidebar.classList.toggle("active");
+
+  if (sidebar.classList.contains("active")) {
+    menutoggle.querySelector("i").classList.remove("fa-bars");
+  } else {
+    menutoggle.querySelector("i").classList.add("fa-bars");
+  }
+});
+}
+
+</script> 

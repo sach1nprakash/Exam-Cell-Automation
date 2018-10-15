@@ -1,0 +1,65 @@
+<div class="studentFont">
+	<div class="studentHead">
+		<div id="menu-toggle">
+			<i class="fa fa-bars"></i> <span>Tasks</span>
+		</div>
+		<div class="logo">Student</div>
+	</div>
+	<div class="studentSidebar">
+		<ul>
+			<li><a href="#/dash"><i class="fa fa-desktop"></i><span>Dashboard</span></a></li>
+			<li><a href="#/profile"><i class="fa fa-user"></i><span>Profile</span></a></li>
+			<li><a href="#/AdmCont"><i class="fa fa-phone" style="font-size:24px; color:#6cbac8;"></i><span>Contact Admin</span></a></li>
+			<li><a href="#/stuHall"><i class="fa fa-id-card"></i><span>
+						Hall Ticket</span></a></li>
+			<li><a href="#/register"><i class="fa fa-user-plus"></i><span>Register</span></a></li>
+			<li><a href="#/result"><i class="fa fa-trophy"></i><span>Results</span></a></li>
+			<li><a href="#/"><i class="fa fa-power-off"></i><span>Logout</span></a></li>
+		</ul>
+	</div>
+
+
+
+	<div class="studentMain">
+		<div class="hipsum">
+			<div class="jumbotron">
+			
+				<h3 class="text-left"><b>Any queries?</b></h3>
+				<br>
+				<div class="md-form amber-textarea active-amber-textarea-2">
+					
+					<textarea type="text" class="md-textarea form-control" ng-model="msg.messsage"
+						rows="7" placeholder="Type your message here..."></textarea>
+				</div>
+				<br>
+				<input type="submit" value="Submit" class="btn btn-primary" ng-disabled="ack" ng-click="msg.submitToAdmin()">
+				<br><br>
+				{{msg.ack}}
+			</div>
+		</div>
+		<div class="footer">
+			<p>Exam-Cell-Automation</p>
+		</div>
+	</div>
+
+</div>
+<script type="text/javascript">
+
+var main = document.querySelector(".studentMain");
+var sidebar = document.querySelector(".studentSidebar");
+var menutoggle = document.querySelector("#menu-toggle");
+if(menutoggle){
+menutoggle.addEventListener("click", function(e) {
+  menutoggle.classList.toggle("active");
+  main.classList.toggle("active");
+  sidebar.classList.toggle("active");
+
+  if (sidebar.classList.contains("active")) {
+    menutoggle.querySelector("i").classList.remove("fa-bars");
+  } else {
+    menutoggle.querySelector("i").classList.add("fa-bars");
+  }
+});
+}
+
+</script>

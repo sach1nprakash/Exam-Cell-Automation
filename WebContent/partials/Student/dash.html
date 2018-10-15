@@ -1,0 +1,121 @@
+<div class="studentFont">
+<div class="studentHead">
+  <div id="menu-toggle">
+    <i class="fa fa-bars"></i>
+    <span>Tasks</span>
+  </div>
+  <div class="logo">
+    Student
+  </div>
+</div>
+<div class="studentSidebar">
+  <ul>
+    <li><a href="#/dash"><i class="fa fa-desktop" style="font-size:24px; color:#6cbac8;"></i><span>Dashboard</span></a></li>
+    <li><a href="#/profile"><i class="fa fa-user"></i><span>Profile</span></a></li>
+    <li><a href="#/AdmCont"><i class="fa fa-phone"></i><span>Contact Admin</span></a></li>
+    <li><a href="#/stuHall"><i class="fa fa-id-card"></i><span>Hall Ticket</span></a></li>
+    <li><a href="#/register"><i class="fa fa-user-plus"></i><span>Register</span></a></li>
+   <li><a href="#/result"><i class="fa fa-trophy"></i><span>Results</span></a></li>
+    <li><a href="#/"><i class="fa fa-power-off"></i><span>Logout</span></a></li>
+    </ul>
+</div>
+
+
+
+
+
+	 <div class="container-fluid">
+		<!-- <img src="../img/background.jpg">  -->
+		<div class="studentMain">
+  		<div class="hipsum">
+    	<div class="jumbotron">
+
+
+			<div class="row">
+			<div
+				class="col-md-offset-1 col-md-10 col-sm-offset-4 col-sm-4 col-xs-offset-2 col-xs-6">
+				<h1><b>Welcome,{{studentDash.studentName}}</b></h1>
+				<div class="mark">
+					<marquee scrollamount="5" behavior="scroll" direction="left">
+						<b>Quote Of The Day:</b>{{studentDash.quot}}
+					</marquee>
+				</div>
+
+			</div>
+
+
+		</div>
+
+
+
+
+
+		<div class="row">
+
+			<div class="col-md-offset-0 col-md-6 col-sm-offset-4 col-sm-4 col-xs-offset-2 col-xs-4" style="text-align: left;">
+				<br>
+				<ul class="welcomeText">
+					<p>This is an integrated Exam-Cell System which includes an a
+						web based software for effective management of Exam services. This
+						supports institution-wide administrative and Exam
+						management systems.This allows you to register for the
+						examination,Print your hall tickets, View your results, view
+						your profile,View your marks, Print your HallTickets and etc. This
+						is a very optimized platform which allows the students to apply
+						for examinations at ease.</p>
+
+				</ul>
+
+
+			</div>
+			<br>
+			<H4>Recent Announcements from Admin:</H4>
+			<div class=" col-md-offset-1 col-md-2 col-sm-4 col-xs-6" style="text-align: left;">
+				
+				<div class="holder">
+					<marquee scrollamount="5" behavior="scroll" direction="down">
+						<ul>
+
+							<li ng-repeat= "item in studentDash.announcement track by $index">
+							<span style="color:grey">{{studentDash.announcementDates[$index]}} :</span>
+							<b>{{item}}</b>
+							</li>
+						 	<li><i>You can view the latest announcements from Admin here.</i></li>
+						</ul>
+					</marquee>
+
+				</div>
+
+			</div> 
+			</div>
+  	
+		</div>
+</div>
+	<div class="footer">
+    <p>Exam-Cell-Automation</p>
+  	</div>
+</div>
+</div>
+</div>
+
+
+<script type="text/javascript">
+
+var main = document.querySelector(".studentMain");
+var sidebar = document.querySelector(".studentSidebar");
+var menutoggle = document.querySelector("#menu-toggle");
+if(menutoggle){
+menutoggle.addEventListener("click", function(e) {
+  menutoggle.classList.toggle("active");
+  main.classList.toggle("active");
+  sidebar.classList.toggle("active");
+
+  if (sidebar.classList.contains("active")) {
+    menutoggle.querySelector("i").classList.remove("fa-bars");
+  } else {
+    menutoggle.querySelector("i").classList.add("fa-bars");
+  }
+});
+}
+
+</script> 
